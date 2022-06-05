@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 12px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border-radius:3px;
+    }
+    td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    }
+</style>
+</head>
+<body>
+
+<h2>My Phonebook</h2>
+
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name">
+<table id="myTable">
+     <tr>
+         <td class="td0">Adele</td>
+         <td class="td0">Aakash</td>
+         <td class="td0">Bablu</td>
+     </tr>
+     <tr>
+        <td class="td1">BAlly</td>
+        <td class="td1" >zab</td>
+        <td class="td1">xyz</td>
+    </tr>
+    <tr>
+        <td class="td2">cat</td>
+        <td class="td2">hero</td>
+        <td class="td2">raja</td>
+    </tr>
+</table>
+
+
+<script>
+
+function myFunction() {
+    var input, filter,table,tr,td, i,j, textValue,flag;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table= document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+    for (i = 0; i < tr.length; i++) {
+        td= table.getElementsByClassName("td"+i);
+    
+       flag=0;
+       for(j=0;j<td.length;j++)
+        {
+          textValue=td[j].textContent ||td[j].innerText;
+          if (textValue.toUpperCase().indexOf(filter) > -1) {
+           
+              flag=1;
+            } 
+        }
+        if(flag==1)
+        {
+            tr[i].style.display = "";
+        }
+        else
+        {
+           tr[i].style.display = "none";
+        }
+
+    }
+}
+</script>
+
+</body>
+</html>
